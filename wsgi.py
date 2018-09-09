@@ -17,7 +17,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
         data = cgi.parse_qs(self.rfile.read(length), keep_blank_values=1)
         recordID = self.path.split('/')[-1]
         LocalData.records[recordID] = data
-        print "record %s is added successfully" % recordID
+        print ("record %s is added successfully" % recordID)
       else:
         data = {}
       self.send_response(200)
@@ -79,6 +79,6 @@ if __name__=='__main__':
   args = parser.parse_args()
 
   server = SimpleHttpServer(args.ip, args.port)
-  print 'HTTP Server Running...........'
+  print ('HTTP Server Running...........')
   server.start()
   server.waitForThread()
